@@ -13,12 +13,12 @@ export default function Partners() {
     { id: "all", label: "الكل" },
     { id: "university", label: "جامعات" },
     { id: "institute", label: "معاهد" },
-    { id: "company", label: "شركات" },
-    { id: "organization", label: "منظمات" },
   ];
 
+  const allowedTypes = ["university", "institute"];
+
   const filteredPartners = filter === "all"
-    ? (partnersList || [])
+    ? (partnersList || []).filter((p) => allowedTypes.includes(p.type))
     : (partnersList || []).filter((p) => p.type === filter);
 
   const videoSlides = slides?.filter(s => s.type === "video") ?? [];
